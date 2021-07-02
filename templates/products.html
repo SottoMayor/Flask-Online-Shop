@@ -1,0 +1,36 @@
+
+{% include 'head.html' %}
+<link rel="stylesheet" href="/static/ler_todos.css">
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    <div class="segundario">
+        <h2>Ver todos os produtos</h2>
+    </div>
+    <div class="segundario">
+        <table class="tabela">
+            <tr class="tabela_header"> <!-- Cabeçalho da table -->
+                <th>ID</th>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Quantidade</th>
+                <th>Ações</th>
+            </tr>
+            <tbody>
+                {% for produto in lista_produtos %}
+                <tr>
+                    <td>{{produto.id}}</td>
+                    <td>
+                        <img src="{{produto.imagem_produto}}" alt="Imagem de {{nome_produto}}"></td>
+                    <td>{{produto.nome_produto}}</td>
+                    <td>{{produto.quant_produto}}</td>
+                    <td>
+                        <a href="/ler/{{produto.id}}" class="botao">Saber mais</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.tabela {
+    border: 3px outset #fa0000;
+    border-spacing: 1;
+    margin: 0 50px 20px;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.tabela tr:nth-child(even) td {
+    background: #fff;
+}
+
+.tabela td {
+    padding: 10px;
+}
+
+.tabela_header td {
+    font-weight: bold;
+}
+
+img {
+    max-width: 200px;
+    max-height: 200px;
+}
+.segundario {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family:'Arial Narrow', Arial;
+}
