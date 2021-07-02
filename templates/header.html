@@ -1,13 +1,34 @@
+<!--tira isso aqui depois!-->
 {% include 'head.html' %}
+</head>
 
-<header class="header">
-    <div class="principal">
-        <img src="../static/img/logo-blue.gif" class="logo" alt="Logo da blue"> <!-- Logo da blue -->
-    </div>
-    <div class="principal" id="titulo">Titulo Exemplo</div><!-- Nome da loja -->
-    <div class="principal botoes"> <!-- Botões -->
+<header class="main-header">
+    
+    <!--menu-desktop-->
+    <nav class="menu container"> 
+        <ul class="menu__lista">
+            <li class="menu__item">
+                <a href="/" class="botao">Home</a>
+            </li>
+            <li class="menu__item">
+                <a href="/produtos" class="botao"> Produtos</a>
+            </li>
+            <li class="menu__item">
+                <a href="/criar-produto" class="botao">Criar produto</a>
+            </li>
+        </ul>
+        
+        <figure class="logo">
+            <a href="/"><img src="../static/img/logo-blue.gif" alt="LogoBlue"></a> <!-- Logo da blue -->
+        </figure>
+    </nav>
+
+    <!--menu-mobile
+    <nav class=" botoes"> 
         <a href="/criar-produto" class="botao">Adicionar produto</a>
         <a href="/" class="botao">Página Principal</a>
         <a href="/produtos" class="botao">Ver lista de produtos</a>
-    </div>
+    </nav>
+    -->
+
 </header>
