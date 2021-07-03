@@ -37,7 +37,7 @@ class Lista_produtos(db.Model):
 
 @bp.route("/")
 def main():
-    return render_template("header.html")
+    return render_template("index.html")
 
 
 @bp.route("/produtos")
