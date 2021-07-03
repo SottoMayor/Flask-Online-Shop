@@ -79,10 +79,6 @@
     position: relative;
     top: 6px;
     left: 0;
-    /*
-    transform: rotate(-45deg);
-    top: 20px;
-    */
 }
 
 .mobile-icon__line2{
@@ -92,11 +88,6 @@
     position: relative;
     top: 12px;
     left: 0;
-    /*
-    left: -15px;
-    fadeout
-    display: none;
-    */
 }
 
 .mobile-icon__line3{
@@ -106,10 +97,6 @@
     position: relative;
     top: 18px;
     left: 0;
-    /*
-    transform: rotate(45deg);
-    top: 12px;
-    */
 }
 
 /*Logo blue*/
