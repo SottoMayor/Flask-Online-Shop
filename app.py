@@ -10,8 +10,7 @@ host = 'tuffi.db.elephantsql.com'
 database = 'kmvnfjma'
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@' + \
-    f'{host}/{database}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -31,8 +30,13 @@ class Lista_produtos(db.Model):
         self.quant_produto = quant_produto
         self.imagem_produto = imagem_produto
 
+    @staticmethod
     def get_products():
         return Lista_produtos.query.all()
+
+    @staticmethod
+    def get_single_product(produto_id):
+        return Lista_produtos.query.get(produto_id)
 
 
 @bp.route("/")
@@ -49,6 +53,11 @@ def ler():
 @bp.route("/criar-produto")
 def criar():
     return render_template("create-product.html")
+
+@bp.route("/produtos/<produto_id>")
+def ler_1(produto_id):
+    produto = Lista_produtos.get_single_product(produto_id)
+    return render_template("product.html",produto=produto)
 
 
 app.register_blueprint(bp)

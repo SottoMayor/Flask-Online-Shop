@@ -3,9 +3,10 @@
 <link rel="stylesheet" href="/static/ler_todos.css">
 </head>
 
-<body style="">
+<body> <!--Tinha um style vazio aqui, o apaguei. Imagino que não era útil. Caio-->
     {% include 'header.html' %}
 
+    <div class="spacing"></div>
     <div class="segundario">
         <h2>Ver todos os produtos</h2>
     </div>
@@ -27,7 +28,7 @@
                     <td>{{produto.nome_produto}}</td>
                     <td>{{produto.quant_produto}}</td>
                     <td>
-                        <a href="/ler/{{produto.id}}" class="botao">Saber mais</a>
+                        <a href="/produtos/{{produto.id}}" class="botao">Saber mais</a>
                     </td>
                 </tr>
                 {% endfor %}

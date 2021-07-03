@@ -1,0 +1,24 @@
+{% include 'head.html' %}
+
+<link rel="stylesheet" href="/static/read_one.css">
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <div class="spacing"></div>
+    <div class="flex_container base">
+        <div class="read_one_container">
+            <img src="{{produto.imagem_produto}}" alt="{{produto.nome_produto}}" class="imagem">
+        </div>
+        <div class="read_one_container">
+            <div class="texto"> <!--Para adicionar informações textuais do produto!-->
+                <h1>{{produto.nome_produto}}</h1> 
+            </div>
+            <div class="compra"> <!--Para adicionar informações sobre a venda do produto!-->
+                <h1>Preço: R$0,99</h1> <!--Placeholder para depois inserir o preço!-->
+                <button class="botao">Comprar!</button>
+                <h4>Quantidade em estoque: {{produto.quant_produto}}</h4>
+            </div>
+        </div>
+    </div>
+</body>
