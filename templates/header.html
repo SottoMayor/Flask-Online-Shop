@@ -4,8 +4,9 @@
 
 <header class="main-header">
     
+    
+    <nav class="menu container">
     <!--menu-desktop-->
-    <nav class="menu container"> 
         <ul class="menu__lista">
             <li class="menu__item">
                 <a href="/" class="botao">Home</a>
@@ -17,18 +18,29 @@
                 <a href="/criar-produto" class="botao">Criar produto</a>
             </li>
         </ul>
+
+        <!--menu-mobile-->
+        <div class="mobile-icon">
+            <div class="mobile-icon__line1"></div>
+            <div class="mobile-icon__line2"></div>
+            <div class="mobile-icon__line3"></div>
+        </div>
+
+        <ul class="menu-mobile__lista">
+            <li class="menu-mobile__item">
+                <a href="/" class="botao-mobile">Página Inicial</a>
+            </li>
+            <li class="menu-mobile__item">
+                <a href="/produtos" class="botao-mobile">Listar produtos</a>
+            </li>
+            <li class="menu-mobile__item">
+                <a href="/criar-produto" class="botao-mobile">Criar produto</a>
+            </li>
+        </ul>
         
         <figure class="logo">
             <a href="/"><img src="../static/img/logo-blue.gif" alt="LogoBlue"></a> <!-- Logo da blue -->
         </figure>
     </nav>
-
-    <!--menu-mobile
-    <nav class=" botoes"> 
-        <a href="/criar-produto" class="botao">Adicionar produto</a>
-        <a href="/" class="botao">Página Principal</a>
-        <a href="/produtos" class="botao">Ver lista de produtos</a>
-    </nav>
-    -->
 
 </header>
