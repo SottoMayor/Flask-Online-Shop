@@ -1,0 +1,23 @@
+.card_menu{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 200vh;
+    max-height: 200vh;
+}
+
+.card {
+    flex-direction: column;
+    padding-bottom: 2vh;
+    margin-bottom: 3vh;
+    margin-left: 2vh;
+    margin-right: 2vh;
+    background-color: #1C2541;
+}
+h5{
+    padding-bottom: 2vh;
+}
+.botao.card{
+    padding: 1vh 1vh;
+    border-radius: 1vh;
+}

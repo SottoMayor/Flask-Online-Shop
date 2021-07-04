@@ -44,7 +44,7 @@
 }
 
 .botao-mobile{
-    background-color: #f61803;
+    background-color: #1C2541;
     border: none;
     border-radius: 4px;
     color: white;
@@ -58,7 +58,7 @@
 }
 
 .botao-mobile:hover {
-    background-color: #f55d4f;
+    background-color: #3A506B;
     transition: 0.3s;
 }
 

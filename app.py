@@ -47,7 +47,7 @@ def main():
 @bp.route("/produtos")
 def ler():
     lista_produtos = Lista_produtos.get_products()
-    return render_template("products.html", lista_produtos=lista_produtos)
+    return render_template("products_card.html", lista_produtos=lista_produtos)
 
 
 @bp.route("/criar-produto")

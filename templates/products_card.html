@@ -1,0 +1,22 @@
+{% include 'head.html' %}
+
+<link rel="stylesheet" href="/static/read_all_cards.css">
+</head>
+
+{% include 'header.html' %}
+
+<body>
+    <div class="spacing"></div>
+    <div class="flex_container card_menu">
+        {% for produto in lista_produtos %}
+        <div class="card">
+            <img src="{{produto.imagem_produto}}" alt="Imagem de {{nome_produto}}" class="img">
+            <h4>{{produto.nome_produto}}</h4>
+            <h5>{{produto.quant_produto}}</h5>
+            <a href="/produtos/{{produto.id}}" class="botao card">Saber mais</a>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/header.js"></script>
+</body>

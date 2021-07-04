@@ -4,10 +4,11 @@
     margin: 0 50px 20px;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background: #1C2541;
 }
 
 .tabela tr:nth-child(even) td {
-    background: #fff;
+    background: #1C2541;
 }
 
 .tabela td {
