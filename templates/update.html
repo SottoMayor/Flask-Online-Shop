@@ -1,0 +1,42 @@
+{% include 'head.html' %}
+<link rel="stylesheet" href="/static/update.css">
+<link rel="stylesheet" href="/static/create.css">
+</head>
+
+<body>
+    {%include 'header.html' %}
+    
+    <div class="spacing"></div>
+
+    {% if condition_met %}
+
+    <div class="flex_container sucesso">
+        <p> Registro editado com sucesso!</p>
+    </div>
+
+    {% endif %}
+
+    <div class="flex_container">
+        <h2>Editar Registro</h2>
+    </div>
+    <div class="flex_container">
+        <form class="form" method="POST">
+            <div class="flex_container form_input">
+                <label for="nome_produto">Nome:</label>
+                <input type="text" id="nome_produto" name="nome_produto" value="{{produto.nome_produto}}" required>
+            </div>
+            <div class="flex_container form_input">
+                <label for="quant_produto">Quantidade de produtos:</label>
+                <input type="text" id="quant_produto" name="quant_produto" value="{{produto.quant_produto}}" required>
+            </div>
+            <div class="flex_container form_input">
+                <label for="imagem_produto">URL da imagem:</label>
+                <input type="text" id="imagem_produto" name="imagem_produto" value="{{produto.imagem_produto}}" required>
+            </div>
+            <div class="flex_container form_input">
+                <input type="submit" class="botao" value="Enviar">
+            </div>
+        </form>
+    </div>
+</body>
+

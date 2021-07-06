@@ -37,9 +37,15 @@ class Lista_produtos(db.Model):
     def get_single_product(produto_id):
         return Lista_produtos.query.get(produto_id)
 
-    def save(self):
+    def set_save(self):
         db.session.add(self)
         db.session.commit()
+
+    def set_data(self, new_data):
+        self.nome_produto = new_data.nome_produto
+        self.quant_produto = new_data.quant_produto
+        self.imagem_produto = new_data.imagem_produto
+        self.set_save()
 
 
 @bp.route("/")
@@ -64,11 +70,27 @@ def criar():
             form['nome_produto'],
             form['quant_produto'],
             form['imagem_produto'])
-        produto.save()
+        produto.set_save()
         id_atribuido = produto.id
 
     return render_template('create-product.html', id_atribuido=id_atribuido, path="/criar-produto",
     pageTitle = "Criar produto")
+
+@bp.route('/atualizar/<produto_id>',methods=('GET','POST'))
+def update(produto_id):
+    condition_met = None
+    produto = Lista_produtos.get_single_product(produto_id)
+
+    if request.method == 'POST':
+        form=request.form
+    
+        new_data = Lista_produtos(form['nome_produto'],form['quant_produto'],form['imagem_produto'])
+
+        produto.set_data(new_data)
+
+        condition_met = True
+
+    return render_template('update.html',produto=produto,condition_met=condition_met)
 
 @bp.route("/produtos/<produto_id>")
 def ler_1(produto_id):
