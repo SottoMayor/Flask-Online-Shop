@@ -1,8 +1,49 @@
 {% include 'head.html' %}
+<link rel="stylesheet" href="/static/create.css">
 </head>
 <body>
     {% include 'header.html' %}
 
+    <div class="spacing"></div>
+
+    <div class="flex_container">
+        <h2>Inserir produtos</h2>
+    </div>
+
+    {% if id_atribuido %}
+
+    <div class="flex_container">
+
+        <p> Filme inserido com sucesso!</br>
+            <br>
+            O ID atribuido foi <span class="id_atribuido">{{id_atribuido}}</span>.
+            <br>
+            <a href="/produtos/{{id_atribuido}}" class="botao">Visualizar Produto</a>
+        </p>
+    </div>
+
+    {% else %}
+
+    <div class="flex_container">
+        <form class="form" method="POST">
+            <div class="flex_container form_input">
+                <label for="nome_produto">Nome do produto:</label>
+                <input type="text" id="nome_produto" name="nome_produto" required>
+            </div>
+            <div class="flex_container form_input">
+                <label for="quant_produto">Quantidade de produtos:</label>
+                <input type="text" id="quant_produto" name="quant_produto" required>
+            </div>
+            <div class="flex_container form_input">
+                <label for="imagem_produto">URL da imagem do produto:</label>
+                <input type="text" id="imagem_produto" name="imagem_produto" required>
+            </div>
+            <div class="flex_container form_input">
+                <input type="submit" class="botao" value="Enviar">
+            </div>
+        </form>
+    </div>
+    {% endif %}
 
     <script src="../static/js/jquery.js"></script> <!--Imagino que não é pra tocar nessas linhas né?-->
     <script src="../static/js/header.js"></script>
