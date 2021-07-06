@@ -1,24 +1,22 @@
-from flask import (Flask, Blueprint, render_template)
+from flask import (Flask, Blueprint, render_template, request)
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 bp = Blueprint('app', __name__)
 
-# Dados para conexão com DB
 user = 'kmvnfjma'
 password = 'XG13yiZsTz5bajf9AibvbMl2P1gmcRJ7'
 host = 'tuffi.db.elephantsql.com'
 database = 'kmvnfjma'
 
-# Conectando DB
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:' + \
-    f'{password}@{host}/{database}'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-
 # nome da tabela: lista_produtos
+
 class Lista_produtos(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome_produto = db.Column(db.Integer, nullable=False)
@@ -39,31 +37,37 @@ class Lista_produtos(db.Model):
     def get_single_product(produto_id):
         return Lista_produtos.query.get(produto_id)
 
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
 
 @bp.route("/")
 def main():
-    return render_template("index.html", pageTitle='Home', path='/')
+    return render_template("index.html")
 
 
 @bp.route("/produtos")
 def ler():
     lista_produtos = Lista_produtos.get_products()
-    return render_template("products_card.html", lista_produtos=lista_produtos,
-                           pageTitle='Todos os Produtos',
-                           path='/produtos')
+    return render_template("products_card.html", lista_produtos=lista_produtos)
 
 
 @bp.route("/criar-produto")
 def criar():
-    return render_template("create-product.html", path='/criar-produto')
+    id_atribuido = None
 
+    if request.method == 'POST':
+        form = request.form
+        filme = Lista_produtos(form['nome'],form['imagem_url'])
+        filme.save()
+        id_atribuido = filme.id
+    return render_template('create-product.html', id_atribuido=id_atribuido)
 
 @bp.route("/produtos/<produto_id>")
 def ler_1(produto_id):
     produto = Lista_produtos.get_single_product(produto_id)
-    print(produto)
-    return render_template("product.html", produto=produto, path='/produtos',
-                           pageTitle='Detalhes Sobre ' + produto.nome_produto)
+    return render_template("product.html",produto=produto)
 
 
 app.register_blueprint(bp)
