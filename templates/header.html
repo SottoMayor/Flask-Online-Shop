@@ -9,13 +9,13 @@
     <!--menu-desktop-->
         <ul class="menu__lista">
             <li class="menu__item">
-                <a href="/" class="botao">Home</a>
+                <a href="/" class="botao {{'active' if path == '/' else ''}} ">Home</a>
             </li>
             <li class="menu__item">
-                <a href="/produtos" class="botao"> Produtos</a>
+                <a href="/produtos" class="botao {{'active' if path == '/produtos' else ''}} ">Produtos</a>
             </li>
             <li class="menu__item">
-                <a href="/criar-produto" class="botao">Criar produto</a>
+                <a href="/criar-produto" class="botao {{'active' if path == '/criar-produto' else ''}} ">Criar produto</a>
             </li>
         </ul>
 
@@ -29,13 +29,13 @@
 
         <ul class="menu-mobile__lista" id="menu-mobile__lista">
             <li class="menu-mobile__item">
-                <a href="/" class="botao-mobile">Página Inicial</a>
+                <a href="/" class="botao-mobile {{'active' if path == '/' else ''}}" >Home</a>
             </li>
             <li class="menu-mobile__item">
-                <a href="/produtos" class="botao-mobile">Listar produtos</a>
+                <a href="/produtos" class="botao-mobile {{'active' if path == '/produtos' else ''}} ">Produtos</a>
             </li>
             <li class="menu-mobile__item">
-                <a href="/criar-produto" class="botao-mobile">Criar produto</a>
+                <a href="/criar-produto" class="botao-mobile {{'active' if path == '/criar-produto' else ''}} ">Criar produto</a>
             </li>
         </ul>
         

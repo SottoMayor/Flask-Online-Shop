@@ -1,5 +1,5 @@
 .main-header{
-    background-color: #be0000;
+    background-color: #0B132B;
     padding: 12px 0;
     position: fixed;
     width: 100%;
@@ -28,7 +28,7 @@
 
 .menu-mobile__lista{
     display: none;
-    background-color: rgb(229, 226, 226);
+    background-color: #3A506B;
     width: 100%;
     position: absolute;
     top: 85px;
@@ -40,11 +40,11 @@
 .menu-mobile__item{
     list-style-type: none;
     padding: 15px 0;
-    border-bottom: 3px solid crimson;
+    border-bottom: 3px solid rgb(153, 151, 151);
 }
 
 .botao-mobile{
-    background-color: #f61803;
+    background-color: #1C2541;
     border: none;
     border-radius: 4px;
     color: white;
@@ -57,8 +57,10 @@
     margin: 0 auto;
 }
 
-.botao-mobile:hover {
-    background-color: #f55d4f;
+.botao:hover,
+.botao.mobile:active,
+.active {
+    background-color: #5BC0BE;
     transition: 0.3s;
 }
 

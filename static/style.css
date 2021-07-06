@@ -5,13 +5,24 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+body{
+    background-color: #3A506B;
+    color: #6FFFE9;
+}
+
+.flex_container { /*Use para centralizar itens!*/
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .container{
     width: 100%;
     padding: 0 2%;
 }
 
 .botao {
-    background-color: #f61803;
+    background-color: #3A506B;
     border: none;
     border-radius: 4px;
     color: white;
@@ -21,7 +32,22 @@
     text-decoration: none;
 }
 
-.botao:hover {
-    background-color: #f55d4f;
+.botao:hover,
+.botao:active,
+.active {
+    background-color: #5BC0BE;
     transition: 0.3s;
+}
+
+
+.spacing {
+    width: 5rem;
+    height: 10rem;
+}
+
+.img {
+    max-width: 25vh;
+    max-height: 25vh;
+    min-width: 25vh;
+    min-height: 25vh;
 }
