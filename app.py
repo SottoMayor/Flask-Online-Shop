@@ -55,7 +55,9 @@ def ler():
 
 @bp.route("/criar-produto")
 def criar():
-    return render_template("create-product.html", path='/criar-produto')
+    return render_template("create-product.html",
+                           path='/criar-produto',
+                           pageTitle='Criar produto')
 
 
 @bp.route("/produtos/<produto_id>")
