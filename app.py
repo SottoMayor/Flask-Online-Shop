@@ -44,30 +44,37 @@ class Lista_produtos(db.Model):
 
 @bp.route("/")
 def main():
-    return render_template("index.html")
+    return render_template("index.html",path="/",pageTitle = "Pagina Inicial")
 
 
 @bp.route("/produtos")
 def ler():
     lista_produtos = Lista_produtos.get_products()
-    return render_template("products_card.html", lista_produtos=lista_produtos)
+    return render_template("products_card.html", lista_produtos=lista_produtos,path="/produtos",
+    pageTitle = "Lista de produtos")
 
 
-@bp.route("/criar-produto")
+@bp.route("/criar-produto",methods=('GET','POST'))
 def criar():
     id_atribuido = None
 
     if request.method == 'POST':
         form = request.form
-        filme = Lista_produtos(form['nome'],form['imagem_url'])
-        filme.save()
-        id_atribuido = filme.id
-    return render_template('create-product.html', id_atribuido=id_atribuido)
+        produto = Lista_produtos(
+            form['nome_produto'],
+            form['quant_produto'],
+            form['imagem_produto'])
+        produto.save()
+        id_atribuido = produto.id
+
+    return render_template('create-product.html', id_atribuido=id_atribuido, path="/criar-produto",
+    pageTitle = "Criar produto")
 
 @bp.route("/produtos/<produto_id>")
 def ler_1(produto_id):
     produto = Lista_produtos.get_single_product(produto_id)
-    return render_template("product.html",produto=produto)
+    return render_template("product.html",produto=produto,path="/produtos/<produto_id>",
+    pageTitle = "Produto {{produto.nome}}")
 
 
 app.register_blueprint(bp)

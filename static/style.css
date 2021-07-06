@@ -22,7 +22,7 @@ body{
 }
 
 .botao {
-    background-color: #3A506B;
+    background-color: #5BC0BE;
     border: none;
     border-radius: 4px;
     color: white;
@@ -35,7 +35,7 @@ body{
 .botao:hover,
 .botao:active,
 .active {
-    background-color: #5BC0BE;
+    background-color: #6FFFE9;
     transition: 0.3s;
 }
 
