@@ -46,6 +46,10 @@ class Lista_produtos(db.Model):
         self.quant_produto = new_data.quant_produto
         self.imagem_produto = new_data.imagem_produto
         self.set_save()
+    
+    def del_data(self):
+        db.session.delete(self)
+        db.session.commit()
 
 
 @bp.route("/")
@@ -98,6 +102,22 @@ def ler_1(produto_id):
     return render_template("product.html",produto=produto,path="/produtos/<produto_id>",
     pageTitle = "Produto {{produto.nome}}")
 
+@bp.route('/deletar/<produto_id>')
+def delete(produto_id):
+    produto = Lista_produtos.get_single_product(produto_id)
+
+    return render_template('delete.html',produto=produto)
+
+@bp.route('/deletar/<produto_id>/confirmado')
+def delete_confirmed(produto_id):
+    condition_met = None
+    produto = Lista_produtos.get_single_product(produto_id)
+
+    if produto:
+        produto.del_data()
+        condition_met = True
+
+    return render_template('delete.html',condition_met=condition_met)
 
 app.register_blueprint(bp)
 
