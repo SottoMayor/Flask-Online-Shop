@@ -7,16 +7,23 @@
 
 <body>
     <div class="spacing"></div> <!-- Usado para espaçar o topo da página do header - Caio -->
-    <div class="flex_container card_menu">
+    <div class="flex_container container card_menu">
         {% for produto in lista_produtos %}
-        <div class="card">
-            <img src="{{produto.imagem_produto}}" alt="Imagem de {{nome_produto}}" class="img">
-            <h4>{{produto.nome_produto}}</h4>
-            <h5>{{produto.quant_produto}}</h5> <!-- Inserir informações abaixo desse ponto usando h5 para espaçamento - Caio -->
-            <a href="/produtos/{{produto.id}}" class="botao card">Saber mais</a>
-            <a href="/atualizar/{{produto.id}}" class="botao card">Editar produto</a>
-            <a href="/deletar/{{produto.id}}" class="botao card">Deletar produto</a>
-        </div>
+        <a href="/produtos/{{produto.id}}">
+            <div class="card">
+                <figure class="card__figure">
+                    <img src="{{produto.imagem_produto}}" alt="Imagem de {{nome_produto}}">
+                </figure>
+                <div class="card__info">
+                    <div class="card__marker"></div>
+                    <div class="arrow-right"></div>
+                    <h4 class="card__product-title">{{produto.nome_produto}}</h4>
+                    <h5 class="card__product-price">R$ 100</h5>
+                    <h6 class="card__product-price"><strong>Categoria</strong>: {{produto.categoria}}</h6>
+                    <h6 class="card__product-quantity"><strong>{{produto.quant_produto}} unidades disponíveis</strong></h6>               
+                </div>
+            </div>
+        </a>
         {% endfor %}
     </div>
     <script src="../static/js/jquery.js"></script>
