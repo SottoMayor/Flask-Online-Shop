@@ -60,6 +60,10 @@ class Lista_produtos(db.Model):
         db.session.delete(self)
         db.session.commit()
 
+    def comprar(self,quantidade_vendida):
+        self.quant_produto -= quantidade_vendida
+        self.set_save()
+
 
 @bp.route("/")
 def main():
@@ -136,6 +140,19 @@ def delete_confirmed(produto_id):
         condition_met = True
 
     return render_template('delete.html',condition_met=condition_met)
+
+@bp.route('/produtos/<produto_id>/comprar', methods=('GET','POST'))
+def comprar(produto_id):
+    produto = Lista_produtos.get_single_product(produto_id)
+
+    if request.method == 'POST':
+        form = request.form
+        quantidade_comprada = form['quantidade']
+        if produto.quant_produto >= quantidade_comprada:
+            produto.comprar(quantidade_comprada)
+    
+    return render_template('buy.html',path="/produtos/<produto_id>/comprar",pageTitle = "Comprar produto")
+
 
 app.register_blueprint(bp)
 
