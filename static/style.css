@@ -28,8 +28,10 @@ body{
     border-radius: 4px;
     color: white;
     cursor: pointer;
-    font-size: 16px;
-    padding: 20px 15px;
+    font-size: 2vh;
+    padding: 1.5vh 1vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     text-decoration: none;
 }
 

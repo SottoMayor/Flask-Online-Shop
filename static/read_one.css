@@ -23,11 +23,13 @@
 }
 
 .texto {
+    display: flex;
     flex-direction: column;
     padding-right: 3vh;
     padding-left: 3vh;
 }
 .compra {
+    display: flex;
     flex-direction: column;
     padding-left: 3vh;
     padding-right: 3vh;

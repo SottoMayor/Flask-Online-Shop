@@ -22,12 +22,18 @@ class Lista_produtos(db.Model):
     nome_produto = db.Column(db.Integer, nullable=False)
     quant_produto = db.Column(db.String(255), nullable=False)
     imagem_produto = db.Column(db.String(255), nullable=False)
+    preco_produto = db.Column(db.Integer,nullable = False)
+    descri_produto = db.Column(db.String(255), nullable=False)
+    categoria_produto = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, nome_produto, quant_produto, imagem_produto):
+    def __init__(self, nome_produto, quant_produto, imagem_produto,preco_produto,descri_produto,categoria_produto):
 
         self.nome_produto = nome_produto
         self.quant_produto = quant_produto
         self.imagem_produto = imagem_produto
+        self.preco_produto = preco_produto
+        self.descri_produto = descri_produto 
+        self.categoria_produto = categoria_produto
 
     @staticmethod
     def get_products():
@@ -45,6 +51,9 @@ class Lista_produtos(db.Model):
         self.nome_produto = new_data.nome_produto
         self.quant_produto = new_data.quant_produto
         self.imagem_produto = new_data.imagem_produto
+        self.preco_produto = new_data.preco_produto
+        self.descri_produto = new_data.descri_produto
+        self.categoria_produto = new_data.categoria_produto
         self.set_save()
     
     def del_data(self):
@@ -73,7 +82,10 @@ def criar():
         produto = Lista_produtos(
             form['nome_produto'],
             form['quant_produto'],
-            form['imagem_produto'])
+            form['imagem_produto'],
+            form['preco_produto'],
+            form['descri_produto'],
+            form['categoria_produto'])
         produto.set_save()
         id_atribuido = produto.id
 
@@ -88,7 +100,13 @@ def update(produto_id):
     if request.method == 'POST':
         form=request.form
     
-        new_data = Lista_produtos(form['nome_produto'],form['quant_produto'],form['imagem_produto'])
+        new_data = Lista_produtos(
+            form['nome_produto'],
+            form['quant_produto'],
+            form['imagem_produto'],
+            form['preco_produto'],
+            form['descri_produto'],
+            form['categoria_produto'])
 
         produto.set_data(new_data)
 
@@ -100,7 +118,7 @@ def update(produto_id):
 def ler_1(produto_id):
     produto = Lista_produtos.get_single_product(produto_id)
     return render_template("product.html",produto=produto,path="/produtos/<produto_id>",
-    pageTitle = "Produto {{produto.nome}}")
+    pageTitle = "Ver mais")
 
 @bp.route('/deletar/<produto_id>')
 def delete(produto_id):

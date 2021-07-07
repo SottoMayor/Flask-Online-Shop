@@ -13,12 +13,17 @@
         <div class="read_one_container">
             <div class="texto"> <!--Para adicionar informações textuais do produto!-->
                 <h1>{{produto.nome_produto}}</h1> 
+                <h3>{{produto.descri_produto}}</h3>
             </div>
             <div class="compra"> <!--Para adicionar informações sobre a venda do produto!-->
-                <h1>Preço: R$0,99</h1> <!--Placeholder para depois inserir o preço!-->
+                <h1>Preço: {{produto.preco_produto}}</h1>
                 <button class="botao">Comprar!</button>
                 <h4>Quantidade em estoque: {{produto.quant_produto}}</h4>
+                <a href="/atualizar/{{produto.id}}" class="botao">Editar produto</a>
+                <a href="/deletar/{{produto.id}}" class="botao">Deletar produto</a>
             </div>
         </div>
     </div>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/header.js"></script>
 </body>
