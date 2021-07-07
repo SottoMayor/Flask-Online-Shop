@@ -40,9 +40,16 @@ body{
     transition: 0.3s;
 }
 
-
 .spacing {
     width: 5rem;
-    height: 10rem;
+    height: 7rem;
 }
 
+.warning{
+    background-color: rgb(230, 208, 15);
+}
+
+.warning:hover{
+    background-color: rgb(204, 185, 17) !important;
+    transition: 0.3s;
+}

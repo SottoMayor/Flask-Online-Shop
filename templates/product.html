@@ -5,20 +5,60 @@
 
 <body>
     {% include 'header.html' %}
-    <div class="spacing"></div> <!-- Usado para espaçar o topo da página do header - Caio -->
-    <div class="flex_container base">
-        <div class="read_one_container">
-            <img src="{{produto.imagem_produto}}" alt="{{produto.nome_produto}}" class="imagem">
-        </div>
-        <div class="read_one_container">
-            <div class="texto"> <!--Para adicionar informações textuais do produto!-->
-                <h1>{{produto.nome_produto}}</h1> 
+    <div class="spacing"></div>
+    <div class="flex_container container">
+
+        <div class="card">
+            <figure class="card__figure">
+                <img src="{{produto.imagem_produto}}" alt="Imagem de {{nome_produto}}">
+            </figure>
+            <div class="card__info">
+                <div class="card__marker"></div>
+                <div class="arrow-right"></div>
+                <h4 class="card__product-title">{{produto.nome_produto}}</h4>
+                <h5 class="card__product-price">R$ 100</h5>
+                <h6 class="card__product-price"><strong>Categoria</strong>: {{produto.categoria}}</h6>
+                <h6 class="card__product-quantity"><strong>{{produto.quant_produto}} unidades disponíveis</strong></h6>               
             </div>
-            <div class="compra"> <!--Para adicionar informações sobre a venda do produto!-->
-                <h1>Preço: R$0,99</h1> <!--Placeholder para depois inserir o preço!-->
-                <button class="botao">Comprar!</button>
-                <h4>Quantidade em estoque: {{produto.quant_produto}}</h4>
+        </div>
+
+        <div class="container product-container">
+            <div class="product-container__infos">
+                <h1 class="product-container__title">Descrição do produto</h1>
+                <p class="product-container__descri"><!--{{produto.descri_produto}}-->
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi sed, veritatis esse ea quos aut aliquid, sunt nobis est debitis neque minus nam atque sequi? Aperiam ratione aut voluptas beatae.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam voluptatem quam facere reiciendis earum tenetur ipsum dolorum rem enim facilis quisquam deleniti nesciunt, vero recusandae ad! Minima, illo alias.
+                </p>
+            </div>
+
+            <div class="product-container__comands">
+                <div class="product-container__pay">
+                    <button class="botao warning" id="pay">Eu quero!</button>
+
+                    <form action="/produtos/<produto_id>/comprar" method="POST" id="payed" class="product-container__payed">
+                        <h2 class="product-container__title">Estamos quase lá...</h2>
+                        <label for="quantity">Eu quero</label>
+                        <input type="number" id="quantity" name="quantity" min="1" max={{produto.quant_produto}}>
+                        <label for="quantity">unidades!</label>
+                        
+                        <button type="submit" class="botao">Comprar!</button>
+                    </form>
+                </div>
+
+                <div class="product-container__admin">
+                    <h4 class="product-container__warning">Opções de administrador</h4>
+                    <a href="/atualizar/<produto_id>" class="botao">Atualizar</a>
+                    <a href="/deletar/<produto_id>" class="botao">Deletar</a>
+                </div>
+
             </div>
         </div>
+
     </div>
+
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/header.js"></script>
+    <script src="../static/js/read-one.js"></script>
+
 </body>
+</html>
