@@ -7,7 +7,8 @@
 
 body{
     background-color: #3A506B;
-    color: #6FFFE9;
+    /*color: #6FFFE9;*/
+    color: white;
 }
 
 .flex_container { /*Use para centralizar itens!*/
@@ -45,9 +46,3 @@ body{
     height: 10rem;
 }
 
-.img {
-    max-width: 25vh;
-    max-height: 25vh;
-    min-width: 25vh;
-    min-height: 25vh;
-}
