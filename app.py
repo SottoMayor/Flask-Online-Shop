@@ -1,4 +1,4 @@
-from flask import (Flask, Blueprint, render_template, request)
+from flask import (Flask, Blueprint, render_template, request, redirect,flash)
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -143,15 +143,19 @@ def delete_confirmed(produto_id):
 
 @bp.route('/produtos/<produto_id>/comprar', methods=('GET','POST'))
 def comprar(produto_id):
+    condition_met = None
     produto = Lista_produtos.get_single_product(produto_id)
 
     if request.method == 'POST':
         form = request.form
-        quantidade_comprada = form['quantidade']
-        if produto.quant_produto >= quantidade_comprada:
+        quantidade_comprada = int(form['quantity'])
+        if quantidade_comprada <= produto.quant_produto:
             produto.comprar(quantidade_comprada)
+            condition_met = True
     
-    return render_template('buy.html',path="/produtos/<produto_id>/comprar",pageTitle = "Comprar produto")
+    return render_template("product.html",produto=produto,path="/produtos/<produto_id>",
+    pageTitle = "Ver mais",condition_met=condition_met)
+    # return render_template('product.html',produto=produto, path="/produtos/<produto_id>/comprar",pageTitle = "Comprar produto")
 
 
 app.register_blueprint(bp)
