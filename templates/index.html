@@ -5,11 +5,15 @@
 {% include 'header.html' %}
 <body>
 
+    <video autoplay loop poster="images/torres.jpg" class="bg_video">
+        <source src="/static/img/bg.mp4" type="video/webm">
+    </video>
+
     <div class="spacing"></div>
 
     <div class="baseBase">
         <div class="base">
-            <h1>Preço mais barato é no Loja Flask!</h1>
+            <div class="texto">Preço mais barato é no Loja Flask!</div>
         </div>
     </div>
     <section class="slider-wrapper container">
@@ -20,13 +24,13 @@
 
         <div class="slider">
             {% for prod in peripheral %}
-    
+            
                 <article class="card">
-    
-                    <figure class="card__figure">
-                        <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
-                    </figure>
-    
+                    <a href="/produtos/{{prod.id}}">
+                        <figure class="card__figure">
+                            <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
+                        </figure>
+                    </a>
                     <div class="card__info">
                         <h2 class="card__info--title">{{prod.nome_produto}}</h2>
     
@@ -35,7 +39,7 @@
                     </div>
     
                 </article>
-    
+            
                 
     
             {% endfor%}
@@ -52,11 +56,11 @@
             {% for prod in hardware %}
     
                 <article class="card">
-    
-                    <figure class="card__figure">
-                        <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
-                    </figure>
-    
+                    <a href="/produtos/{{prod.id}}">
+                        <figure class="card__figure">
+                            <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
+                        </figure>
+                    </a>
                     <div class="card__info">
                         <h2 class="card__info--title">{{prod.nome_produto}}</h2>
     
@@ -83,11 +87,11 @@
             {% for prod in protector %}
     
                 <article class="card">
-    
-                    <figure class="card__figure">
-                        <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
-                    </figure>
-    
+                    <a href="/produtos/{{prod.id}}">
+                        <figure class="card__figure">
+                            <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
+                        </figure>
+                    </a>
                     <div class="card__info">
                         <h2 class="card__info--title">{{prod.nome_produto}}</h2>
     
