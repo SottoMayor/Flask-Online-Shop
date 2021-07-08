@@ -1,4 +1,4 @@
-from flask import (Flask, Blueprint, render_template, request, redirect, flash)
+from flask import (Flask, Blueprint, render_template, request)
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -10,7 +10,8 @@ host = 'tuffi.db.elephantsql.com'
 database = 'kmvnfjma'
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:{password}@{host}/{database}'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://{user}:' + \
+    f'{password}@{host}/{database}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -27,7 +28,8 @@ class Lista_produtos(db.Model):
     descri_produto = db.Column(db.String(255), nullable=False)
     categoria_produto = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, nome_produto, quant_produto, imagem_produto, preco_produto, descri_produto, categoria_produto):
+    def __init__(self, nome_produto, quant_produto, imagem_produto,
+                 preco_produto, descri_produto, categoria_produto):
 
         self.nome_produto = nome_produto
         self.quant_produto = quant_produto
@@ -75,7 +77,6 @@ def main():
     peripheral = Lista_produtos.get_product_by_category('Periferico')
     hardware = Lista_produtos.get_product_by_category('Hardware')
     protector = Lista_produtos.get_product_by_category('Protector')
-    print(peripheral)
     return render_template("index.html", path="/",  peripheral=peripheral,
                            hardware=hardware, protector=protector,
                            pageTitle="Pagina Inicial")
@@ -84,8 +85,8 @@ def main():
 @bp.route("/produtos")
 def ler():
     lista_produtos = Lista_produtos.get_products()
-    return render_template("products_card.html", lista_produtos=lista_produtos, path="/produtos",
-                           pageTitle="Lista de produtos")
+    return render_template("products_card.html", lista_produtos=lista_produtos,
+                           path="/produtos", pageTitle="Lista de produtos")
 
 
 @bp.route("/criar-produto", methods=('GET', 'POST'))
@@ -104,8 +105,8 @@ def criar():
         produto.set_save()
         id_atribuido = produto.id
 
-    return render_template('create-product.html', id_atribuido=id_atribuido, path="/criar-produto",
-                           pageTitle="Criar produto")
+    return render_template('create-product.html', id_atribuido=id_atribuido,
+                           path="/criar-produto", pageTitle="Criar produto")
 
 
 @bp.route('/atualizar/<produto_id>', methods=('GET', 'POST'))
@@ -128,14 +129,15 @@ def update(produto_id):
 
         condition_met = True
 
-    return render_template('update.html', produto=produto, condition_met=condition_met)
+    return render_template('update.html', produto=produto,
+                           condition_met=condition_met)
 
 
 @bp.route("/produtos/<produto_id>")
 def ler_1(produto_id):
     produto = Lista_produtos.get_single_product(produto_id)
-    return render_template("product.html", produto=produto, path="/produtos/<produto_id>",
-                           pageTitle="Ver mais")
+    return render_template("product.html", produto=produto,
+                           path="/produtos/<produto_id>", pageTitle="Ver mais")
 
 
 @bp.route('/deletar/<produto_id>')
@@ -169,9 +171,9 @@ def comprar(produto_id):
             produto.comprar(quantidade_comprada)
             condition_met = True
 
-    return render_template("product.html", produto=produto, path="/produtos/<produto_id>",
-                           pageTitle="Ver mais", condition_met=condition_met)
-    # return render_template('product.html',produto=produto, path="/produtos/<produto_id>/comprar",pageTitle = "Comprar produto")
+    return render_template("product.html", produto=produto,
+                           path="/produtos/<produto_id>", pageTitle="Ver mais",
+                           condition_met=condition_met)
 
 
 app.register_blueprint(bp)
