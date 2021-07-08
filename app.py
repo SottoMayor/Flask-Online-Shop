@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 bp = Blueprint('app', __name__)
 
+#conf Banco de Dados
+
 user = 'kmvnfjma'
 password = 'XG13yiZsTz5bajf9AibvbMl2P1gmcRJ7'
 host = 'tuffi.db.elephantsql.com'
