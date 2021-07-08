@@ -1,0 +1,44 @@
+    {% include 'head.html' %}
+    <link rel="stylesheet" href="/static/delete.css">
+</head>
+
+<body>
+    {% include 'header.html' %}
+
+    <div class="spacing"></div>
+    
+    {% if condition_met %}
+
+        <div class="flex_container removido_sucesso">
+            <p>Registro removido com sucesso</p>
+        </div>
+        <div class="flex_container">
+            <a href="/produtos" class="botao">Visualizar todos os registros</a>
+        </div>
+    
+    {% elif produto %}
+        
+        <div class="flex_container">
+            <h2>Remover registro</h2>
+        </div>
+        <div class="flex_container">
+            <p>Tem certeza que deseja remover o produto <span class="highlight">{{produto.nome_produto}}</span>?</p>
+        </div>
+        <div class="flex_container">
+            <a href="/deletar/{{produto.id}}/confirmado" class="botao">Remover</a>
+            <a href="/produtos" class="botao">Cancelar</a>
+        </div>
+    
+    {% else %}
+
+        <div class="flex_container">
+            <h2>Remover registro</h2>
+        </div>        
+        <div class="flex_container">
+            <p>Nenhum filme foi encontrado.</p>
+        </div>
+        <div class="flex_container">
+            <a href="/produtos" class="botao">Voltar para a lista de produtos</a>
+        </div>
+    {% endif %}
+</body>

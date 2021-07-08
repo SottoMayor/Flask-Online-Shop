@@ -1,22 +1,30 @@
 {% include 'head.html' %}
 
 <link rel="stylesheet" href="/static/read_one.css">
+<link rel="stylesheet" href="/static/update.css">
 </head>
 
 <body>
     {% include 'header.html' %}
     <div class="spacing"></div>
+    {% if condition_met %}
+
+    <div class="flex_container sucesso">
+        <p> Produto comprado com sucesso!</p>
+    </div>
+
+    {% endif %}
     <div class="flex_container container">
 
         <div class="card">
             <figure class="card__figure">
-                <img src="{{produto.imagem_produto}}" alt="Imagem de {{nome_produto}}">
+                <img src="{{produto.imagem_produto}}" alt="Imagem de {{produto.nome_produto}}">
             </figure>
             <div class="card__info">
                 <div class="card__marker"></div>
                 <div class="arrow-right"></div>
                 <h4 class="card__product-title">{{produto.nome_produto}}</h4>
-                <h5 class="card__product-price">R$ 100</h5>
+                <h5 class="card__product-price">R{{produto.preco_produto}}</h5>
                 <h6 class="card__product-price"><strong>Categoria</strong>: {{produto.categoria}}</h6>
                 <h6 class="card__product-quantity"><strong>{{produto.quant_produto}} unidades disponíveis</strong></h6>               
             </div>
@@ -25,9 +33,8 @@
         <div class="container product-container">
             <div class="product-container__infos">
                 <h1 class="product-container__title">Descrição do produto</h1>
-                <p class="product-container__descri"><!--{{produto.descri_produto}}-->
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi sed, veritatis esse ea quos aut aliquid, sunt nobis est debitis neque minus nam atque sequi? Aperiam ratione aut voluptas beatae.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate nam voluptatem quam facere reiciendis earum tenetur ipsum dolorum rem enim facilis quisquam deleniti nesciunt, vero recusandae ad! Minima, illo alias.
+                <p class="product-container__descri">
+                    {{produto.descri_produto}}
                 </p>
             </div>
 
@@ -35,7 +42,7 @@
                 <div class="product-container__pay">
                     <button class="botao warning" id="pay">Eu quero!</button>
 
-                    <form action="/produtos/<produto_id>/comprar" method="POST" id="payed" class="product-container__payed">
+                    <form action="/produtos/{{produto.id}}/comprar" method="POST" id="payed" class="product-container__payed">
                         <h2 class="product-container__title">Estamos quase lá...</h2>
                         <label for="quantity">Eu quero</label>
                         <input type="number" id="quantity" name="quantity" min="1" max={{produto.quant_produto}}>
@@ -47,8 +54,8 @@
 
                 <div class="product-container__admin">
                     <h4 class="product-container__warning">Opções de administrador</h4>
-                    <a href="/atualizar/<produto_id>" class="botao">Atualizar</a>
-                    <a href="/deletar/<produto_id>" class="botao">Deletar</a>
+                    <a href="/atualizar/{{produto.id}}" class="botao">Atualizar</a>
+                    <a href="/deletar/{{produto.id}}" class="botao">Deletar</a>
                 </div>
 
             </div>
