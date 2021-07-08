@@ -1,5 +1,5 @@
 .form {
-    width: 600px;
+    width: 70vh;
   }
   
   .form_input {
@@ -9,30 +9,30 @@
   
   .form_input label {
     font-weight: bold;
-    padding-right: 8px;
+    padding-right: 2vh;
   }
   
   .form_input input[type="text"],
   select {
-    width: 400px;
-    padding: 6px;
-    margin: 8px 0;
+    width: 40vh;
+    padding: 0.5vh;
+    margin: 1vh 0;
     display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 0.2vh solid #ccc;
+    border-radius: 1vh;
     box-sizing: border-box;
-  }
+  } 
   
   .form_input input[type="submit"] {
     width: 100%;
   }
   
   .id_atribuido {
-    background: #3359ec;
+    background: #5BC0BE;
     border-radius: 5px;
     color: #ffffff;
-    font-size: 22px;
+    font-size: 2vh;
     font-weight: bold;
-    padding: 5px 20px;
+    padding: 0.9vh 2vh;
   }
   

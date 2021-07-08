@@ -10,3 +10,24 @@
     background: url(images/torre.jpg) no-repeat;
     background-size: cover; 
 }
+
+.baseBase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.base {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0b132b8a;
+    height: 50vh;
+    width: 70rem;
+}
+.texto {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 4vh;
+}

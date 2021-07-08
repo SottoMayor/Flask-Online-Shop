@@ -7,10 +7,10 @@
 }
 
 .highlight {
-    background: #3359ec;
-    border-radius: 5px;
+    background: #0B132B;
+    border-radius: 0.5vh;
     color: #FFFFFF;
-    font-size: 22px;
+    font-size: 2vh;
     font-weight: bold;
-    padding: 5px 20px;
+    padding: 1vh 2vh;
 }
