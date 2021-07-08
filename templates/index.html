@@ -1,23 +1,113 @@
 {% include 'head.html' %}
-<link rel="stylesheet" href="/static/index.css">
+<link rel="stylesheet" href="../static/slick.css">
+<link rel="stylesheet" href="../static/index.css">
 </head>
 {% include 'header.html' %}
 <body>
 
-    <video autoplay loop poster="images/torres.jpg" class="bg_video">
-        <source src="/static/img/bg.mp4" type="video/webm">
-    </video>
-
-    <div class="spacing"></div>
     <div class="spacing"></div>
 
     <div class="baseBase">
         <div class="base">
-            <div class="texto">Preço mais barato é no AnCaDa!</div>
-            <a href="/produtos" class="botao">Veja nossos produtos!</a>
+            <h1>Preço mais barato é no Loja Flask!</h1>
         </div>
     </div>
+    <section class="slider-wrapper container">
+
+        <h2>
+            Veja nossos <strong>Periféricos</strong>
+        </h2>
+
+        <div class="slider">
+            {% for prod in peripheral %}
+    
+                <article class="card">
+    
+                    <figure class="card__figure">
+                        <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
+                    </figure>
+    
+                    <div class="card__info">
+                        <h2 class="card__info--title">{{prod.nome_produto}}</h2>
+    
+                        <h4 class="card__info--price">R{{prod.preco_produto}}</h4>
+    
+                    </div>
+    
+                </article>
+    
+                
+    
+            {% endfor%}
+        </div>
+    </section>
+
+    <section class="slider-wrapper container">
+
+        <h2>
+            Veja nossos <strong>Hardwares</strong>
+        </h2>
+
+        <div class="slider">
+            {% for prod in hardware %}
+    
+                <article class="card">
+    
+                    <figure class="card__figure">
+                        <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
+                    </figure>
+    
+                    <div class="card__info">
+                        <h2 class="card__info--title">{{prod.nome_produto}}</h2>
+    
+                        <h4 class="card__info--price">R{{prod.preco_produto}}</h4>
+    
+                    </div>
+    
+                </article>
+    
+                
+    
+            {% endfor%}
+        </div>
+    </section>
+
+
+    <section class="slider-wrapper container">
+
+        <h2>
+            Veja nossos <strong>Protectors</strong>
+        </h2>
+
+        <div class="slider">
+            {% for prod in protector %}
+    
+                <article class="card">
+    
+                    <figure class="card__figure">
+                        <img src="{{prod.imagem_produto}}" alt="Imagem de {{prod.nome_produto}}">
+                    </figure>
+    
+                    <div class="card__info">
+                        <h2 class="card__info--title">{{prod.nome_produto}}</h2>
+    
+                        <h4 class="card__info--price">R{{prod.preco_produto}}</h4>
+    
+                    </div>
+    
+                </article>
+    
+                
+    
+            {% endfor%}
+        </div>
+    </section>
+
+    
+
     <script src="../static/js/jquery.js"></script>
     <script src="../static/js/header.js"></script>
+    <script src="../static/js/slick.js"></script>
+    <script src="../static/js/index.js"></script>
 </body>
 </html>
